@@ -5,7 +5,7 @@ import { TransliteratorCard } from "@/components/TransliteratorCard";
 import { TransliterationStyle } from "@/types/transliteration";
 
 export default function Home() {
-  const defaultStyle = TransliterationStyle.IJMES;
+  const defaultStyle = TransliterationStyle.SHARIASOURCE;
 
   const [arabic, setArabic] = useState("");
   const [roman, setRoman] = useState("");
