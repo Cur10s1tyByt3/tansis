@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     }
 
     const systemPrompt = buildPrompt(style as TransliterationStyle, reverse);
-    const userPrompt = reverse ? `Romanized: """${text}"""` : `Arabic: """${text}"""`;
+    const userPrompt = reverse ? `Romanized: ${text}` : `${text}`;
 
     let transliteration = "";
 
@@ -39,6 +39,13 @@ export async function POST(req: NextRequest) {
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt }
           ],
+          response_format: {
+            "type": "text"
+          },
+          max_completion_tokens: 2048,
+          top_p: 1,
+          frequency_penalty: 0,
+          presence_penalty: 0
         });
 
         result = completion.choices[0]?.message.content?.trim() ?? "";

@@ -153,7 +153,7 @@ Provide full short vowels only in:
     1.    Identify every non-English Arabic-script term.
     2.    Decide whether it falls under a "no-transliteration exception."
     3.    Transliterate it with diacritics (or diacritics-stripped fallback) following rules 2-6.
-    4.    Return the text with all such replacements made.
+    4.    Return the transliterated text with all such replacements made. (You MUST never return empty responses.)
 `
   }]
 ]);
