@@ -1,6 +1,6 @@
 "use client";
 
-import { Clipboard, Share2, RotateCcw, Trash2, Play } from "lucide-react";
+import { Clipboard, Share2, ArrowUpDown, Trash2, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -113,7 +113,7 @@ export function ActionButtons({
         disabled={disabled}
         className="inline-flex gap-2 px-5 py-2 rounded-full font-medium cursor-pointer"
       >
-        <RotateCcw className="h-4 w-4" />
+        <ArrowUpDown className="h-4 w-4" />
         Swap
       </Button>
 

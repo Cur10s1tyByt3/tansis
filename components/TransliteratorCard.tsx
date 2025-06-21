@@ -54,10 +54,7 @@ export function TransliteratorCard({
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
         className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg p-8"
       >
         {/* Header */}
@@ -140,7 +137,7 @@ export function TransliteratorCard({
           disabled={!canTransliterate}
           loading={loading}
         />
-      </motion.div>
+      </div>
     </div>
   );
 }

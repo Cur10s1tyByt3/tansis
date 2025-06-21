@@ -34,6 +34,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           // Base styles
           "w-full p-4 text-xl leading-relaxed resize-none rounded-2xl shadow-inner border border-neutral-200 transition-colors",
           "focus:ring-2 focus:ring-indigo-400 focus:border-transparent outline-none",
+          // Fixed height to prevent layout shift
+          "min-h-[120px]",
           // Variant-specific styles
           isInput
             ? "bg-white/80 backdrop-blur"

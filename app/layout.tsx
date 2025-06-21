@@ -11,6 +11,7 @@ const inter = Inter({
 const notoNaskhArabic = Noto_Naskh_Arabic({
   subsets: ["arabic"],
   variable: "--font-arabic",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
