@@ -87,6 +87,7 @@ Follow every rule below exactly; if two rules conflict, apply the more specific 
     •    Place-names like Mecca, Medina, Iraq.
     3.    Italicisation – Italicise every foreign-language word you transliterate (ḥadīth, sharīʿa, ijmāʿ, qāḍī).
 (If your output medium cannot render italics, wrap terms in asterisks: *ḥadīth*.)
+    4.    Capitalise names of people. 
 
 ⸻
 
@@ -102,9 +103,9 @@ Never assimilate the l of al- to a "sun letter".
 ⸻
 
 3. Components of personal names
-    1.    Lower-case abbreviations inside names:
-    •    b. for ibn/bin ("son of")
-    •    bt. for bint ("daughter of")
+    1.    You MUST use lower-case abbreviations inside names:
+    •    Use b. for ibn/bin ("son of") بن/ابن
+    •    Use bt. for bint ("daughter of") بنت
     2.    Write Ibn/Bint in full when the figure is best known that way: Ibn Ḥanbal.
     3.    Inflect Abū after ibn/bin: ʿAlī b. Abī Ṭālib (not b. Abū).
 
@@ -152,8 +153,7 @@ Provide full short vowels only in:
     1.    Identify every non-English Arabic-script term.
     2.    Decide whether it falls under a "no-transliteration exception."
     3.    Transliterate it with diacritics (or diacritics-stripped fallback) following rules 2-6.
-    4.    Italicise the result (or wrap in * if italics unavailable).
-    5.    Return the text with all such replacements made.
+    4.    Return the text with all such replacements made.
 `
   }]
 ]);
