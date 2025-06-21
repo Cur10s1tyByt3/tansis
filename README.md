@@ -1,9 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Usul Transliteration
+
+A modern web application for transliterating Arabic text to Latin script using various academic transliteration standards. Built with Next.js 15 and powered by OpenAI.
+
+## Features
+
+- **Multiple Transliteration Standards**: Support for IJMES, ALA-LC, DIN 31635, Buckwalter, Custom, and SHARIAsource styles
+- **Bidirectional Conversion**: Convert Arabic to Latin script and reverse transliteration
+- **Batch Processing**: API endpoint for processing multiple texts at once
+- **Responsive Design**: Optimized for both desktop and mobile devices
+- **Real-time Processing**: Instant transliteration with loading states
+- **Error Handling**: Comprehensive error handling with retry logic for SHARIAsource
+
+## Supported Transliteration Standards
+
+- **IJMES** - International Journal of Middle Eastern Studies standard
+- **ALA-LC** - American Library Association - Library of Congress romanization
+- **DIN 31635** - German transliteration standard
+- **Buckwalter** - ASCII-only transliteration system
+- **SHARIAsource** - Enhanced IJMES with specific scholarly conventions
+- **Custom** - Simplified, readable romanization
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Frontend**: React 19, TypeScript, Tailwind CSS
+- **UI Components**: Radix UI primitives with custom styling
+- **AI Integration**: OpenAI GPT-4
+- **Styling**: Tailwind CSS with custom design system
+- **Forms**: React Hook Form with Zod validation
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+- OpenAI API key and endpoint
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd t-2
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Set up environment variables:
+Create a `.env.local` file in the root directory with:
+```env
+AZURE_OPENAI_API_KEY=your_api_key_here
+AZURE_OPENAI_ENDPOINT=your_endpoint_here
+AZURE_4_1_DEPLOYMENT=your_deployment_name
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
@@ -14,23 +75,118 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Endpoints
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Single Transliteration
+```
+POST /api/transliterate
+```
 
-## Learn More
+**Request Body:**
+```json
+{
+  "text": "السلام عليكم",
+  "style": "IJMES",
+  "reverse": false
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+**Response:**
+```json
+{
+  "transliteration": "al-salām ʿalaykum"
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Batch Transliteration
+```
+POST /api/transliterate/batch
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Request Body:**
+```json
+{
+  "texts": ["السلام عليكم", "مرحبا"],
+  "style": "IJMES",
+  "reverse": false
+}
+```
 
-## Deploy on Vercel
+**Response:**
+```json
+{
+  "results": [
+    {
+      "text": "السلام عليكم",
+      "transliteration": "al-salām ʿalaykum"
+    },
+    {
+      "text": "مرحبا", 
+      "transliteration": "marḥaban"
+    }
+  ]
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### API Documentation
+```
+GET /api/transliterate
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Returns comprehensive API documentation with available styles and examples.
+
+## Project Structure
+
+```
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   └── transliterate/ # Transliteration endpoints
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # React components
+│   ├── ui/               # Reusable UI components
+│   └── *.tsx             # Feature components
+├── lib/                  # Utility libraries
+│   ├── openai.ts         # Azure OpenAI configuration
+│   ├── styles.ts         # Transliteration styles & prompts
+│   └── utils.ts          # Helper utilities
+├── types/                # TypeScript type definitions
+├── playground/           # Development scripts and test data
+└── scripts/              # Build and utility scripts
+```
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build production application
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Testing
+
+Use the playground scripts to test the API:
+
+```bash
+node playground/test_api.js
+```
+
+## Contributing
+
+1. Follow the existing code style and conventions
+2. Use TypeScript for all new code
+3. Add appropriate error handling
+4. Update documentation for new features
+5. Test thoroughly before submitting
+
+## License
+
+This project is private and not open for public distribution.
+
+## Support
+
+For issues and questions, please refer to the project documentation or contact the development team.

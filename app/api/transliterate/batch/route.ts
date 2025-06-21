@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         });
 
         const result = completion.choices[0]?.message.content?.trim() ?? "";
-        transliteration = result;
+        transliteration = result.replace(/\*/g, '');
       } else {
         const completion = await openai.chat.completions.create({
           model: process.env.AZURE_4_1_DEPLOYMENT || "snapsolve-gpt4.1",

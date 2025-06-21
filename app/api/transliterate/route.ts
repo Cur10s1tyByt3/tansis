@@ -49,7 +49,8 @@ export async function POST(req: NextRequest) {
         }
       }
       
-      transliteration = result;
+      // Remove asterisks used for italicization in the output
+      transliteration = result.replace(/\*/g, '');
     } else {
       // Standard single call for other styles
       const completion = await openai.chat.completions.create({
