@@ -27,10 +27,8 @@ export async function POST(req: NextRequest) {
     let transliteration = "";
 
     if (style === TransliterationStyle.SHARIASOURCE && !reverse) {
-      // SHARIAsource requires a chain of two calls
-      
-      // First call: Apply the SHARIAsource transliteration rules
-      const firstCompletion = await openai.chat.completions.create({
+      // SHARIAsource with single call and regex cleanup
+      const completion = await openai.chat.completions.create({
         model: process.env.AZURE_4_1_DEPLOYMENT || "snapsolve-gpt4.1",
         temperature: 0,
         messages: [
@@ -39,25 +37,10 @@ export async function POST(req: NextRequest) {
         ],
       });
 
-      const firstResult = firstCompletion.choices[0]?.message.content?.trim() ?? "";
-
-      // Second call: Extract the final transliteration result
-      const secondCompletion = await openai.chat.completions.create({
-        model: process.env.AZURE_4_1_DEPLOYMENT || "snapsolve-gpt4.1",
-        temperature: 0,
-        messages: [
-          { 
-            role: "system", 
-            content: "Extract and return only the final transliterated text from the input. Remove any explanations, formatting, or additional text. Return only the clean transliterated result." 
-          },
-          { 
-            role: "user", 
-            content: `Please extract the final transliteration result from this output: """${firstResult}"""` 
-          }
-        ],
-      });
-
-      transliteration = secondCompletion.choices[0]?.message.content?.trim() ?? "";
+      const result = completion.choices[0]?.message.content?.trim() ?? "";
+      
+      // Remove asterisks used for italicization in the output
+      transliteration = result.replace(/\*/g, '');
     } else {
       // Standard single call for other styles
       const completion = await openai.chat.completions.create({
