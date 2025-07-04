@@ -85,9 +85,7 @@ Follow every rule below exactly; if two rules conflict, apply the more specific 
     •    Omit short-vowel endings unless the text quotes Qurʾān or poetry.
     2.    No-transliteration exceptions – Keep established English spellings for:
     •    Place-names like Mecca, Medina, Iraq.
-    3.    Italicisation – Italicise every foreign-language word you transliterate (ḥadīth, sharīʿa, ijmāʿ, qāḍī).
-(If your output medium cannot render italics, wrap terms in asterisks: *ḥadīth*.)
-    4.    Capitalisation rules:
+    3.    Capitalisation rules:
     •    Capitalize the first word of any transliterated text or sentence.
     •    Capitalize personal names and honorifics (al-Sunna, al-Riḍā, al-Mahdī).
     •    Capitalize proper nouns and geographical names.
@@ -180,6 +178,12 @@ export const buildPrompt = (style: TransliterationStyle, reverse = false): strin
   }
   
   if (reverse) {
+    // Special handling for SHARIAsource reverse transliteration
+    if (style === TransliterationStyle.SHARIASOURCE) {
+      return getSHARIAsourceReversePrompt();
+    }
+    
+    // Generic reverse handling for other styles
     return config.prompt.replace(
       'transliterate Arabic text into Latin script',
       'convert romanized text back into Arabic script'
@@ -190,6 +194,91 @@ export const buildPrompt = (style: TransliterationStyle, reverse = false): strin
   }
   
   return config.prompt;
+};
+
+const getSHARIAsourceReversePrompt = (): string => {
+  return `You are a reverse transliteration assistant for SHARIAsource styleguide (IJMES superset).
+Your task is to convert SHARIAsource-style romanized text back into proper Arabic script. Follow every rule below exactly.
+
+⸻
+
+1. Character mappings (Roman to Arabic)
+    •    ā → ا (alif with fatḥa)
+    •    ī → ي (yāʾ for long vowel)
+    •    ū → و (wāw for long vowel) 
+    •    ḥ → ح
+    •    kh → خ
+    •    dh → ذ
+    •    sh → ش
+    •    ṣ → ص
+    •    ḍ → ض
+    •    ṭ → ط
+    •    ẓ → ظ
+    •    ʿ → ع (ʿayn)
+    •    gh → غ
+    •    q → ق
+    •    th → ث
+    •    j → ج (never dj)
+    •    ʾ → ء (hamza)
+
+⸻
+
+2. Definite article reconstruction
+    •    al- → ال
+    •    lil- → لل (li + al contracted)
+    •    waʾl- → وال (wa + al contracted)
+    •    biʾl- → بال (bi + al contracted)  
+    •    kaʾl- → كال (ka + al contracted)
+    •    Never convert li'l-, wa'l-, bi'l-, ka'l- (wrong apostrophe) - these should be treated as errors
+
+⸻
+
+3. Personal names and titles
+    •    Capitalize first letters indicate proper nouns - convert to Arabic with appropriate forms
+    •    b. → بن (ibn/bin abbreviated form)
+    •    bt. → بنت (bint abbreviated form)
+    •    Ibn/Bint at start → ابن/بنت (full forms)
+    •    Abūʾl- → أبو ال (contracted form)
+    •    Dhūʾl- → ذو ال (contracted form)
+
+⸻
+
+4. Vowel reconstruction
+    •    Short vowels (a, i, u) are typically omitted in Arabic script unless in Qurʾānic/poetic contexts
+    •    ay → اي (true diphthong with yāʾ)
+    •    aw → او (true diphthong with wāw)
+    •    -iyya (nisba ending) → ية
+    •    Do not insert short vowel diacritics unless the source indicates they should be present
+
+⸻
+
+5. Word boundaries and prefixes
+    •    wa- (and) → و
+    •    fa- (so/then) → ف  
+    •    bi- (with/in) → ب
+    •    li- (for/to) → ل
+    •    ka- (like/as) → ك
+    •    Hyphenated prefixes should attach directly to following words
+
+⸻
+
+6. Special considerations
+    •    Preserve any Arabic text that appears mixed with romanized text
+    •    Convert italicized terms (*word*) back to Arabic script
+    •    Maintain original punctuation and spacing
+    •    If uncertain about vowel placement, use unvocalized forms
+    •    tāʾ marbūṭa: words ending in -a (especially feminine) likely end in ة
+
+⸻
+
+7. Output format
+    1.    Convert all romanized SHARIAsource text to Arabic script
+    2.    Preserve punctuation marks, parentheses, and numbers
+    3.    Maintain word order and spacing
+    4.    Return only the Arabic text without explanations or notes
+    5.    Never return empty responses
+
+Apply these rules systematically to convert the romanized input back to proper Arabic script.`;
 };
 
 export const getStyleLabel = (style: TransliterationStyle): string => {
