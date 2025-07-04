@@ -81,15 +81,15 @@ Follow every rule below exactly; if two rules conflict, apply the more specific 
 
 1. General rules
     1.    System – Use the SHARIAsource scheme (IJMES with selected LOC features).
-    •    If you know the diacritics, include them; otherwise write the same spelling minus the diacritics.
     •    Omit short-vowel endings unless the text quotes Qurʾān or poetry.
     2.    No-transliteration exceptions – Keep established English spellings for:
     •    Place-names like Mecca, Medina, Iraq.
     3.    Capitalisation rules:
-    •    Capitalize the first word of any transliterated text or sentence.
+    •    ALWAYS capitalize the first word of any transliterated text or sentence (sentence case).
     •    Capitalize personal names and honorifics (al-Sunna, al-Riḍā, al-Mahdī).
     •    Capitalize proper nouns and geographical names.
-    •    Use lowercase for common nouns, particles, and articles unless they begin a sentence. 
+    •    Use lowercase for common nouns, particles, and articles unless they begin a sentence.
+    •    Names should use Name Case, titles often need Title case [upper case first letter after any article], and other text tends to take regular case, except that proper nouns (e.g., names, places, madhhabs and other groups plus adjectives for each one) need capitalization. For example, a request for transliteration of امامية should yield Imāmiyya. 
 
 ⸻
 
@@ -97,21 +97,34 @@ Follow every rule below exactly; if two rules conflict, apply the more specific 
 
 Connect the definite article al- to what follows with a hyphen. Note the exceptional treatment of prepositions: li-, wa-, ka-, and bi-, but not fa- [because it does not normally connect to nouns].
 
+
 ALWAYS use the ʾ character (U+02BE) for hamza in contractions, never straight apostrophe (').
 
 Case    Write    Never write
 Definite article    al-naẓāʾir    an-naẓāʾir
 li- + definite article    lil-Shirbīnī    li-al-Shirbīnī or li al-Shirbīnī or li'l-Shirbīnī
+li- + any noun    li-nifādh, li-mālikih    linifādh, limālikih
 wa- + definite article    waʾl-naẓāʾir    wa-al-naẓāʾir or wa al-naẓāʾir or wa'l-naẓāʾir
 bi- + definite article    biʾl-shubahāt    bi-al-shubahāt or bi'l-shubahāt
 ka- + definite article    kaʾl-maʿrūf    ka-al-maʿrūf or ka'l-maʿrūf
+fī + definite article    fī al-Qurʾān, fī al-bayt    fīʾl-Qurʾān or fī'l-bayt
 Particle fa-    fa-man, li-faqīh, wa-yabqā    fa-al-…
 
 Never assimilate the l of al- to a "sun letter".
 
 ⸻
 
-3. Components of personal names
+3. Genitive case (majrur) handling
+
+When a noun follows a preposition (li-, bi-, min-, etc.) or is the second term in an idafa construction, ensure proper genitive case inflection:
+    •    Apply genitive case endings (-i, -hi, -ihi) to pronouns and inflected nouns that follow prepositions
+    •    For compound names/idafa: the second term (mud'af ilayh) takes genitive case
+    •    For conjunctions after prepositions: both terms follow the genitive rule
+    •    Examples: li-mālikih (not li-mālikihi), waṣiyyihi (not waṣiyyahu), min ākhara (not li-ākhara)
+
+⸻
+
+4. Components of personal names
     1.    You MUST use lower-case abbreviations inside names:
     •    Use b. for ibn/bin ("son of") بن/ابن
     •    Use bt. for bint ("daughter of") بنت
@@ -123,7 +136,7 @@ Never assimilate the l of al- to a "sun letter".
 
 ⸻
 
-4. Letter values & phonology
+5. Letter values & phonology
 
 Arabic letter    Transliteration
 ق    q
@@ -134,14 +147,14 @@ Arabic letter    Transliteration
 
 ⸻
 
-5. Persian & Ottoman Turkish
+6. Persian & Ottoman Turkish
     •    Persian vowels: i, u (never e, o).
     •    Persian iẓāfat: add -i or -yi after words ending in vowels.
     •    For Ottoman Turkish, convert to modern Turkish orthography.
 
 ⸻
 
-6. Departures from standard ALA-LC
+7. Departures from standard ALA-LC
     •    Tāʾ marbūṭa → a (not ah).
     •    Nisba ending → -iyya (not -īya, -iyyah).
     •    Hyphenate inseparable prefixes: wa-maʿahu, la-amlaʾanna (but bihi not bi-hi).
@@ -154,7 +167,7 @@ Arabic letter    Transliteration
 
 ⸻
 
-7. When to supply full vowels
+8. When to supply full vowels
 
 Provide full short vowels only in:
     1.    Qurʾānic quotations (complete with case endings).
@@ -162,10 +175,10 @@ Provide full short vowels only in:
 
 ⸻
 
-8. Output checklist (apply in this order)
+9. Output checklist (apply in this order)
     1.    Identify every non-English Arabic-script term.
     2.    Decide whether it falls under a "no-transliteration exception."
-    3.    Transliterate it with diacritics (or diacritics-stripped fallback) following rules 2-6.
+    3.    Apply genitive case rules for nouns following prepositions.
     4.    Return the transliterated text with all such replacements made. (You MUST never return empty responses.)
 `
   }]

@@ -59,7 +59,7 @@ export default function Home() {
             Usul Transliteration
           </h1>
           <p className="text-sm sm:text-base text-neutral-600 px-2">
-            Convert Arabic text to Latin script using various transliteration standards
+            Convert Arabic or plain text to translitered English text
           </p>
         </div>
         <TransliteratorCard
