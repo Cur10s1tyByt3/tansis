@@ -1,4 +1,4 @@
-# Usul Transliteration
+# Tansis AI
 
 A modern web application for transliterating Arabic text to Latin script using various academic transliteration standards. Built with Next.js 15 and powered by OpenAI.
 

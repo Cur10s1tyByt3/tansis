@@ -56,8 +56,8 @@ export function StyleDropdown({ value, onValueChange, disabled = false }: StyleD
           <CommandList>
             <CommandEmpty>No style found.</CommandEmpty>
             <CommandGroup>
-              {styles.map((style) => {
-                const isDisabled = style.value !== TransliterationStyle.SHARIASOURCE;
+              {styles.filter(style => style.value !== TransliterationStyle.CUSTOM).map((style) => {
+                const isDisabled = false; // Enable all styles except Custom
                 return (
                   <CommandItem
                     key={style.value}

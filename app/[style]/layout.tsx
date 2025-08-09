@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = styleDescriptions[style];
 
   return {
-    title: `${styleLabel} Transliterator - Usul Transliteration`,
-    description: `${description}. Convert Arabic text to Latin script using ${styleLabel} standards with Usul Transliteration.`,
+    title: `${styleLabel} Transliterator - Tansis AI`,
+    description: `${description}. Convert Arabic text to Latin script using ${styleLabel} standards with Tansis AI.`,
     keywords: `Arabic, transliteration, ${styleLabel}, ${style}, romanization, Usul, converter`,
-    authors: [{ name: "Usul Transliteration" }],
+    authors: [{ name: "Tansis AI" }],
     openGraph: {
       title: `${styleLabel} Arabic Transliterator`,
       description: `Convert Arabic text using ${styleLabel} transliteration standards`,

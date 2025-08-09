@@ -56,10 +56,10 @@ export default function Home() {
       <div className="relative z-10 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl">
         <div className="text-center mb-6 md:mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-neutral-800 mb-2">
-            Usul Transliteration
+            Tansis AI
           </h1>
           <p className="text-sm sm:text-base text-neutral-600 px-2">
-            Convert Arabic or plain text to translitered English text
+            Convert Arabic or plain text to translitered English
           </p>
         </div>
         <TransliteratorCard

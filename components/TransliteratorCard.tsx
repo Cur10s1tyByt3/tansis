@@ -35,8 +35,6 @@ export function TransliteratorCard({
   isSwapped = false,
   setIsSwapped,
 }: TransliteratorCardProps) {
-  // Suppress unused variable warning - this prop is used in parent components
-  void onReverseTransliterate;
   const handleSwap = () => {
     // Simply swap the contents
     const temp = arabic;
@@ -45,6 +43,16 @@ export function TransliteratorCard({
     
     // Toggle the swapped state
     setIsSwapped?.(!isSwapped);
+  };
+
+  const handleTransliterate = () => {
+    if (isSwapped) {
+      // When swapped, use reverse transliteration
+      onReverseTransliterate();
+    } else {
+      // Normal forward transliteration
+      onSubmit();
+    }
   };
 
   const handleClear = () => {
@@ -63,7 +71,7 @@ export function TransliteratorCard({
         <div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-3 sm:gap-0">
           <StyleDropdown value={style} onValueChange={setStyle} />
           <div className="text-base sm:text-lg font-semibold text-neutral-700 hidden sm:block">
-            Usul Transliteration
+            Tansis AI
           </div>
         </div>
 
@@ -134,7 +142,7 @@ export function TransliteratorCard({
           variant="footer"
           onClear={handleClear}
           onSwap={handleSwap}
-          onTransliterate={onSubmit}
+          onTransliterate={handleTransliterate}
           disabled={!canTransliterate}
           loading={loading}
         />

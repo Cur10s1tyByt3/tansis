@@ -15,11 +15,19 @@ const notoNaskhArabic = Noto_Naskh_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "Usul Transliteration - Arabic to Latin Script Converter",
-  description: "Convert Arabic text to Latin script using various transliteration standards including IJMES, ALA-LC, DIN 31635, and Buckwalter with Usul Transliteration.",
+  title: "Tansis AI - Arabic to Latin Script Converter",
+  description: "Convert Arabic text to Latin script using various transliteration standards including IJMES, ALA-LC, DIN 31635, and Buckwalter with Tansis AI.",
   keywords: "Arabic, transliteration, IJMES, ALA-LC, DIN, Buckwalter, romanization, Usul",
-  authors: [{ name: "Usul Transliteration" }],
+  authors: [{ name: "Tansis AI" }],
   viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: "/favicon.svg",
+  },
+  openGraph: {
+    title: "Tansis AI - Arabic to Latin Script Converter",
+    description: "Convert Arabic text to Latin script using various transliteration standards including IJMES, ALA-LC, DIN 31635, and Buckwalter with Tansis AI.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
